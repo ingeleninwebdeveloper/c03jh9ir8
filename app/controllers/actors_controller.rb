@@ -19,18 +19,21 @@ end
 
 def create
 
- render plain: params[:actor].inspect
-
-
+  @actor = Actor.new(actor_params)
+ 
+ @actor.save
+  redirect_to '/actors'
 
 end
 
-#private
+
+
+
+private
  
- # def article_params
-  #  params.require(:actor).permit(:bio, :name, :birth_date, :birth_place, :image_url, :death_date, :death_place)
-  #end
-
-
+ 
+ def actor_params
+    params.require(:actor).permit(:bio, :name, :birth_date, :birth_place, :image_url, :death_date, :death_place)
+ end
 
 end
